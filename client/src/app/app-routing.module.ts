@@ -14,17 +14,18 @@ import { ContactDetailsComponent } from './contacts/contact-details/contact-deta
 import { ContactDeleteComponent } from './contacts/contact-delete/contact-delete.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent, data: {title: 'Home'}},
+  {path: 'home', component: HomeComponent, data: {title: 'Home'}, canActivate:[AuthGuard]},
   {path: 'about', component: AboutComponent, data: {title: 'About'}},
   {path: 'products', component: ProductsComponent, data: {title: 'Products'}},
   {path: 'services', component: ServicesComponent, data: {title: 'Services'}},
   {path: 'contact', component: ContactComponent, data: {title: 'Contact'}},
-  {path: 'contact/contact-list', component: ContactListComponent, data: {title: 'Contact List'}},
-  {path: 'contact/contact-list/add', component: ContactDetailsComponent, data: {title: 'Add Contact'}},
-  {path: 'contact/contact-list/edit/:id', component: ContactDetailsComponent, data: {title: 'Edit Contact'}},
-  {path: 'contact/contact-list/delete/:id', component: ContactDeleteComponent, data: {title: 'Add Contact'}},
+  {path: 'contact/contact-list', component: ContactListComponent, data: {title: 'Contact List'}, canActivate:[AuthGuard]},
+  {path: 'contact/contact-list/add', component: ContactDetailsComponent, data: {title: 'Add Contact'}, canActivate:[AuthGuard]},
+  {path: 'contact/contact-list/edit/:id', component: ContactDetailsComponent, data: {title: 'Edit Contact'}, canActivate:[AuthGuard]},
+  {path: 'contact/contact-list/delete/:id', component: ContactDeleteComponent, data: {title: 'Add Contact'}, canActivate:[AuthGuard]},
 
   {path: 'register', component: RegisterComponent, data: {title: 'Register'}},
   {path: 'login', component: LoginComponent, data: {title: 'Register'}},
