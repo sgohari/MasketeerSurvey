@@ -32,7 +32,7 @@ mongoDB.once('open', ()=> {
 });
 
 let indexRouter = require('../routes/index');
-let contactRouter = require('../routes/contact');
+let masketeerRouter = require('../routes/masketeer');
 
 
 let app = express();
@@ -98,7 +98,7 @@ passport.use(strategy);
 app.use('/api', indexRouter);
 
 
-app.use('/api/contact-list', passport.authenticate('jwt', {session: false}), contactRouter);
+app.use('/api/survey-questions', passport.authenticate('jwt', {session: false}), masketeerRouter);
 app.get('*', (req, res) => {
   res.sendfile(path.join(__dirname, '../../public/index.html'));
 });
